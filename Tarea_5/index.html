@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Archivo de Datos</title>
+    <style>
+        /* Estilos generales de la página */
+        body {
+            background-color: #1a1a2e;
+            color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        /* Estilos de encabezado */
+        h1 {
+            color: #3498db;
+        }
+
+        /* Contenedor de opciones */
+        .container {
+            width: 80%;
+            max-width: 600px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #16213e;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Estilos de los inputs */
+        .input-group {
+            margin: 15px 0;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #6cace4;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            background-color: #1a1a2e;
+            color: #f0f0f0;
+            font-size: 1rem;
+        }
+
+        /* Estilos del botón */
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            color: #f0f0f0;
+            background-color: #3498db;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Mensaje de éxito */
+        .success {
+            margin-top: 15px;
+            color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+    <h1>Generador de Archivo de Datos</h1>
+    <div class="container">
+        <!-- Formulario para elegir duración y muestreo -->
+        <div class="input-group">
+            <label for="duration">Duración (segundos):</label>
+            <input type="number" id="duration" value="50" min="0.001" step="0.001">
+        </div>
+        <div class="input-group">
+            <label for="samplingInterval">Intervalo de Muestreo (segundos):</label>
+            <input type="number" id="samplingInterval" value="0.001" min="0.001" step="0.001">
+        </div>
+        <button onclick="generateDataFile()">Generar Archivo .txt</button>
+        <p class="success" id="successMessage" style="display: none;">¡Archivo generado y descargado con éxito!</p>
+    </div>
+
+    <script>
+        function generateDataFile() {
+            // Obtener duración y muestreo del usuario
+            const duration = parseFloat(document.getElementById('duration').value);
+            const samplingInterval = parseFloat(document.getElementById('samplingInterval').value);
+
+            // Validar los valores de entrada
+            if (isNaN(duration) || duration <= 0 || isNaN(samplingInterval) || samplingInterval <= 0) {
+                alert("Por favor, ingresa valores válidos para duración e intervalo de muestreo.");
+                return;
+            }
+
+            // Generar los datos
+            let data = '';
+            for (let t = 0; t <= duration; t += samplingInterval) {
+                data += t.toFixed(3) + '\n';
+            }
+
+            // Crear archivo .txt
+            const blob = new Blob([data], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+
+            // Crear y hacer clic en el enlace de descarga
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'datos.txt';
+            link.click();
+
+            // Limpiar el objeto URL
+            URL.revokeObjectURL(url);
+
+            // Mostrar mensaje de éxito
+            document.getElementById('successMessage').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

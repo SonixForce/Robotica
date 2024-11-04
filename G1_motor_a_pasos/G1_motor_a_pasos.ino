@@ -1,0 +1,32 @@
+#define STEP 4 // pin STEP de A4988 a pin 4
+#define DIR 5 // pin DIR de A4988 a pin 5
+
+void setup()
+{
+  pinMode(STEP, OUTPUT) ; // pin 4 como salida
+  pinMode(DIR, OUTPUT) ; // pin 5 como salida
+}
+
+void loop()
+{
+  digitalWrite(DIR, HIGH) ; // giro en un sentido
+  for(int i = 0; i < 200; i++)
+  { // 200 Pasos para Un Motor De 0.9 Grados De Angulo De Paso
+    digitalWrite(STEP, HIGH) ; // Nivel Alto
+    delay(100) ; // Por 10 mseg
+    digitalWrite(STEP, LOW) ; // Nivel Bajo
+    delay(100) ; // Por 10 mseg
+  }
+
+  delay(1000) ; // Demora De 2 Segundos
+
+  digitalWrite(DIR ,LOW) ;// GiroEnSentidoOpuesto
+  for(int i = 0; i <200;i++)
+  {
+    digitalWrite(STEP ,HIGH) ;
+    delay(100) ;
+    digitalWrite(STEP ,LOW) ;
+    delay(100) ;
+  }
+  delay(1000) ;// DemoraDe2Segundos
+}

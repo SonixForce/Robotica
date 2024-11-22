@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generador de Trayectorias</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sección izquierda -->
+      <div class="left-section">
+        <h1>Generador de Trayectorias</h1>
+        <label for="xf">Por favor introduce la posición en X que deseas:</label>
+        <input type="number" id="xf" placeholder="Posición en X" />
+        <label for="yf">Por favor introduce la posición en Y que deseas:</label>
+        <input type="number" id="yf" placeholder="Posición en Y" />
+        <button id="generate">Generar Trayectorias</button>
+      </div>
+
+      <!-- Sección derecha -->
+      <div class="right-section">
+        <canvas id="x-chart"></canvas>
+        <canvas id="y-chart"></canvas>
+      </div>
+    </div>
+  </body>
+</html>

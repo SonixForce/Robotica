@@ -1,0 +1,108 @@
+/* Paleta de colores cálida */
+:root {
+    --background-color: #FFF8E1; /* Fondo cálido */
+    --title-color: #D84315;     /* Título en tono terracota */
+    --input-bg: #FFE0B2;        /* Fondo de los inputs */
+    --input-border: #FFAB91;    /* Borde de los inputs */
+    --button-bg: #FF7043;       /* Fondo del botón */
+    --button-hover-bg: #D84315; /* Fondo del botón al pasar el cursor */
+    --button-color: #FFFFFF;    /* Texto del botón */
+    --text-color: #5D4037;      /* Texto cálido */
+    --chart-bg: #FBE9E7;        /* Fondo del contenedor de las gráficas */
+    --chart-border: #FF7043;    /* Borde de las gráficas */
+  }
+  
+  /* Estilo general */
+  body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  /* Contenedor principal */
+  .container {
+    display: flex;
+    width: 95%;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  /* Sección izquierda: Inputs y título */
+  .left-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .left-section h1 {
+    font-size: 2rem;
+    color: var(--title-color);
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  .left-section label {
+    font-size: 1rem;
+    margin-bottom: 5px;
+  }
+  
+  .left-section input {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--input-border);
+    border-radius: 5px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    font-size: 1rem;
+  }
+  
+  .left-section input:focus {
+    outline: none;
+    border-color: var(--title-color);
+  }
+  
+  .left-section button {
+    background-color: var(--button-bg);
+    color: var(--button-color);
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .left-section button:hover {
+    background-color: var(--button-hover-bg);
+  }
+  
+  /* Sección derecha: Gráficas */
+  .right-section {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: var(--chart-bg);
+    border: 2px solid var(--chart-border);
+    border-radius: 10px;
+  }
+  
+  canvas {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
